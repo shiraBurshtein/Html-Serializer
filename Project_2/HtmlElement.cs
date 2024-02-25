@@ -29,8 +29,8 @@ namespace Project_2
             queue.Enqueue(this);
             while (queue.Count > 0)
             {
-                var tmp= queue.Dequeue();
-                foreach( var child in tmp.Children)
+                var tmp = queue.Dequeue();
+                foreach (var child in tmp.Children)
                 {
                     queue.Enqueue(child);
                 }
@@ -40,14 +40,18 @@ namespace Project_2
         }
         public IEnumerable<HtmlElement> Ancestors()
         {
-            var parent=this;
-            while (parent!=null)
+            var parent = this;
+            while (parent != null)
             {
                 yield return parent;
                 parent = parent.Parent;
 
             }
         }
+    }
+
+    internal static class HtmlElementExstetion
+    { 
         public static IEnumerable<HtmlElement> FindElementsBySelector( this HtmlElement htmlElement , Selector selector)
         {
             HashSet<HtmlElement> result = new HashSet<HtmlElement>();
